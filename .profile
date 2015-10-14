@@ -33,6 +33,18 @@ update-docker-hosts(){
 	done
 }
 
+# run a container interactively with defaults
+docker-shell(){
+	PWDN=$(basename $PWD)
+	docker run \
+		-it \
+		--rm \
+		-v $HOME:/home/$USER \
+		-v $PWD:/root/$PWDN \
+		-w /root/$PWDN \
+		$@
+}
+
 # docker container and image cleanup function
 docker-cleanup(){
 	docker rm $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
@@ -41,7 +53,7 @@ docker-cleanup(){
 
 # my docker boxes
 docker-buildbox(){
-	docker run -it --rm -v $PWD:/usr/src/test cavaliercoder/buildbox
+	docker-shell cavaliercoder/buildbox $@
 }
 
 # command aliases
@@ -61,6 +73,8 @@ export PATH=$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin
 # init docker client
 eval "$(docker-machine env default)"
 update-docker-hosts
+export no_proxy=$no_proxy,$DOCKER_IP
+export NO_PROXY=$no_proxy
 
 # brew autocomlete
 source $(brew --repository)/Library/Contributions/brew_bash_completion.sh

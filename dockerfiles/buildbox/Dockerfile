@@ -34,4 +34,6 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 # clear caches
 RUN yum clean all
 
+WORKDIR /root
+
 CMD /bin/bash
