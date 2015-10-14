@@ -4,7 +4,7 @@ FROM centos:7
 MAINTAINER "Ryan Armstrong" <ryan@cavaliercoder.com>
 
 # install updates and packages
-RUN yum update -y && yum install -y --nogpgcheck \
+RUN yum update -y && yum install -y epel-release && yum install -y --nogpgcheck \
 	autoconf \
 	automake \
 	curl \
@@ -24,8 +24,8 @@ RUN yum update -y && yum install -y --nogpgcheck \
 
 # install Go
 RUN curl -fsSLO "https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz" \
-	&& tar -C /usr/local -xzf golang1.5.1.linux-amd64.tar.gz \
-	&& rm -f golang1.5.1.linux-amd64.tar.gz
+	&& tar -C /usr/local -xzf go1.5.1.linux-amd64.tar.gz \
+	&& rm -f go1.5.1.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
@@ -33,6 +33,6 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 	
 # clear caches
-RUN yum clear all
+RUN yum clean all
 
 CMD /bin/bash
