@@ -18,6 +18,7 @@ RUN yum update -y && yum install -y epel-release && yum install -y --nogpgcheck 
 	postgresql-devel \
 	strace \
 	tcpdump \
+	tree \
 	vim-enhanced \
 	wget
 
