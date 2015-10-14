@@ -1,22 +1,30 @@
-PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]"
+# load site specific (home/work/other) environment
+[[ -f ~/.profile-site ]] && source ~/.profile-site
 
-alias ls="ls -G"
-alias todo="grep -IRn TODO" 
+# print TODO notes in source files
+todo(){
+	[[ -n $1 ]] && grep -iIRno 'todo:.*' $1
+	[[ -n $1 ]] && grep -iIRno 'todo:.*' .
+}
 
-export GREP_OPTIONS="--color"
-export GOPATH=$HOME/Development/gocode
+# change terminal tab name
+tabname(){
+  printf "\e]1;$1\a"
+}
 
-export PATH=$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin
+# change terminal window name
+winname(){
+  printf "\e]2;$1\a"
+}
 
-# init docker
-eval "$(docker-machine env default)"
-
-sudo sed -i '' '/docker\.local$/d' /etc/hosts
-DOCKER_IP="$(echo $DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-[[ -n $DOCKER_IP ]] && sudo /bin/bash -c "echo \"${DOCKER_IP}	docker.local\" >> /etc/hosts"
-
-# add /etc/hosts entries for each docker-machine instance
+# add /etc/hosts entries for each docker-machine instances
 update-docker-hosts(){
+	# default instance
+	sudo sed -i '' '/docker\.local$/d' /etc/hosts
+	DOCKER_IP="$(echo $DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+	[[ -n $DOCKER_IP ]] && sudo /bin/bash -c "echo \"${DOCKER_IP}	docker.local\" >> /etc/hosts"
+
+	# other instances
 	docker-machine ls | tail -n +2 | awk '{print $1}' \
 	| while read -r MACHINE; do
 		DOCKER_IP="$(docker-machine env ${MACHINE} | grep DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
@@ -29,6 +37,29 @@ docker-cleanup(){
 	docker rm $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
 	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
+
+# my docker boxes
+docker-buildbox(){
+	docker run -it --rm -v $PWD:/usr/src/test cavaliercoder/buildbox
+}
+
+# command aliases
+alias ls="ls -G"
+alias ssh="ssh -o TCPKeepAlive=yes -Y"
+
+# set prompt
+export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]"
+
+# configure Go
+export GREP_OPTIONS="--color"
+export GOPATH=$HOME/Development/gocode
+
+# configure PATH
+export PATH=$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin
+
+# init docker client
+eval "$(docker-machine env default)"
+update-docker-hosts
 
 # brew autocomlete
 source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
