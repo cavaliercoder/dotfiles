@@ -16,13 +16,19 @@ brew cask install \
 	vlc
 
 brew install \
+	autoconf \
+	automake \
 	docker \
 	docker-machine \
+	dos2unix \
 	git \
 	go \
+	jq \
+	libtool \
 	mercurial \
 	node \
 	packer \
+	tmux \
 	wget
 
 npm install --global \
