@@ -4,7 +4,7 @@
 # print TODO notes in source files
 todo(){
 	[[ -n $1 ]] && grep -iIRno 'todo:.*' $1
-	[[ -n $1 ]] && grep -iIRno 'todo:.*' .
+	[[ -z $1 ]] && grep -iIRno 'todo:.*' .
 }
 
 # change terminal tab name
