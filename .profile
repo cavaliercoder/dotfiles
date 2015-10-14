@@ -21,14 +21,15 @@ winname(){
 update-docker-hosts(){
 	# default instance
 	sudo sed -i '' '/docker\.local$/d' /etc/hosts
-	DOCKER_IP="$(echo $DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-	[[ -n $DOCKER_IP ]] && sudo /bin/bash -c "echo \"${DOCKER_IP}	docker.local\" >> /etc/hosts"
+	MACHINE_IP="$(echo $DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+	[[ -n $MACHINE_IP ]] && sudo /bin/bash -c "echo \"${MACHINE_IP}	docker.local\" >> /etc/hosts"
+	export DOCKER_IP=$MACHINE_IP
 
 	# other instances
 	docker-machine ls | tail -n +2 | awk '{print $1}' \
 	| while read -r MACHINE; do
-		DOCKER_IP="$(docker-machine env ${MACHINE} | grep DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-		[[ -n $DOCKER_IP ]] && sudo /bin/bash -c "echo \"${DOCKER_IP}	${MACHINE}.docker.local\" >> /etc/hosts"
+		MACHINE_IP="$(docker-machine env ${MACHINE} | grep DOCKER_HOST | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+		[[ -n $MACHINE_IP ]] && sudo /bin/bash -c "echo \"${MACHINE_IP}	${MACHINE}.docker.local\" >> /etc/hosts"
 	done
 }
 

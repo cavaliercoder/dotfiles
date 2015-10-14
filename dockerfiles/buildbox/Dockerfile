@@ -8,7 +8,6 @@ RUN yum update -y && yum install -y epel-release && yum install -y --nogpgcheck 
 	autoconf \
 	automake \
 	curl \
-	epel-release \
 	gcc \
 	gdb \
 	git \

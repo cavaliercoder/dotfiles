@@ -8,6 +8,9 @@ brew install brew-cask
 
 # install packages
 brew cask install \
+	firefox \
+	google-chrome \
+	sublime-text \
 	virtualbox \
 	vagrant \
 	vlc
