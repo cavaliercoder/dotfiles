@@ -7,6 +7,7 @@ MAINTAINER "Ryan Armstrong" <ryan@cavaliercoder.com>
 RUN yum update -y && yum install -y epel-release && yum install -y --nogpgcheck \
 	autoconf \
 	automake \
+	bzip2 \
 	curl \
 	gcc \
 	gdb \
