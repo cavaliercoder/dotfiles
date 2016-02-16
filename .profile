@@ -76,5 +76,8 @@ update-docker-hosts
 export no_proxy=$no_proxy,$DOCKER_IP
 export NO_PROXY=$no_proxy
 
+# configure puppet binaries
+export PATH=/opt/puppetlabs/bin:$PATH
+
 # brew autocomlete
 source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
