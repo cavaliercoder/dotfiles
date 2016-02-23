@@ -27,3 +27,6 @@ echo "${BULLET} Installing Puppet agent..."
 which puppet 1>/dev/null || sudo installer \
 	-pkg /Volumes/${PUPPET_PACKAGE}/puppet-agent-${PUPPET_VER}-1-installer.pkg \
 	-target /
+
+# prevent attachement to puppet master
+puppet agent --disable "Agent is masterless"

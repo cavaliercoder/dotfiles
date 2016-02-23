@@ -42,6 +42,12 @@ docker-shell(){
 		-v $HOME:/home/$USER \
 		-v $PWD:/root/$PWDN \
 		-w /root/$PWDN \
+		-e "HTTP_PROXY=${HTTP_PROXY}" \
+		-e "HTTPS_PROXY=${HTTPS_PROXY}" \
+		-e "NO_PROXY=${NO_PROXY}" \
+		-e "http_proxy=${HTTP_PROXY}" \
+		-e "https_proxy=${HTTPS_PROXY}" \
+		-e "no_proxy=${NO_PROXY}" \
 		$@
 }
 
