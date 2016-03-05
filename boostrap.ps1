@@ -13,7 +13,8 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
     "adobereader",
     "windbg",
     "golang",
-    "fiddler4"
+    "fiddler4",
+    "cygwin"
 ) | % {
     choco install --yes $_
 }
