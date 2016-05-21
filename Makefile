@@ -10,5 +10,6 @@ install:
 	$(COPY) .vimrc $(HOME)/.vimrc
 	$(COPY) .gitconfig $(HOME)/.gitconfig
 	$(COPY) .gitignore_global $(HOME)/.gitignore_global
-
+	$(COPY) com.brew.update.plist ~/Library/LaunchAgents/com.brew.update.plist
+	launchctl load ~/Library/LaunchAgents/com.brew.update.plist
 .PHONY: all build install

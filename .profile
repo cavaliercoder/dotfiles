@@ -77,4 +77,4 @@ export no_proxy=$no_proxy,$DOCKER_IP
 export NO_PROXY=$no_proxy
 
 # brew autocomlete
-source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+source $(brew --repository)/etc/profile.d/bash_completion.sh
