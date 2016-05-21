@@ -42,6 +42,12 @@ docker-shell(){
 		-v $HOME:/home/$USER \
 		-v $PWD:/root/$PWDN \
 		-w /root/$PWDN \
+		-e "HTTP_PROXY=${HTTP_PROXY}" \
+		-e "HTTPS_PROXY=${HTTPS_PROXY}" \
+		-e "NO_PROXY=${NO_PROXY}" \
+		-e "http_proxy=${HTTP_PROXY}" \
+		-e "https_proxy=${HTTPS_PROXY}" \
+		-e "no_proxy=${NO_PROXY}" \
 		$@
 }
 
@@ -75,6 +81,9 @@ eval "$(docker-machine env default)"
 update-docker-hosts
 export no_proxy=$no_proxy,$DOCKER_IP
 export NO_PROXY=$no_proxy
+
+# configure puppet binaries
+export PATH=/opt/puppetlabs/bin:$PATH
 
 # brew autocomlete
 source $(brew --repository)/etc/profile.d/bash_completion.sh
