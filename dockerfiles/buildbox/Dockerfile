@@ -4,7 +4,7 @@ FROM centos:7
 MAINTAINER "Ryan Armstrong" <ryan@cavaliercoder.com>
 
 # install updates and packages
-RUN yum update -y && yum install -y epel-release && yum install -y --nogpgcheck \
+RUN yum makecache fast && yum install -y --nogpgcheck epel-release && yum install -y --nogpgcheck \
 	autoconf \
 	automake \
 	bzip2 \

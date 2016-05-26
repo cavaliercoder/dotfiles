@@ -1,9 +1,13 @@
-all: image
+all: build
 
-image:
-	docker build -t cavaliercoder/buildbox .
+build:
+	docker build \
+		--build-arg "http_proxy=$(http_proxy)" \
+		--build-arg "https_proxy=$(https_proxy)" \
+		--build-arg "no_proxy=$(no_proxy)" \
+		--tag cavaliercoder/buildbox .
 
-test:
+run:
 	docker run -it --rm cavaliercoder/buildbox
 
-.PHONY: all image test
+.PHONY: all build run
