@@ -22,6 +22,7 @@ brew install \
 	docker \
 	docker-machine \
 	dos2unix \
+	gimme \
 	git \
 	go \
 	jq \
@@ -40,6 +41,11 @@ npm install --global \
 # bootstrap Golang
 [[ -z $GOPATH ]] && export GOPATH=$HOME/Development/gocode
 [[ -d $GOPATH ]] || mkdir -p $GOPATH
+gimme 1.7
+gimme 1.6.3
+gimme 1.5.4
+gimme 1.4.3
+gimme 1.3.3
 
 # bootstrap docker
 docker-machine create --driver virtualbox default
