@@ -13,7 +13,8 @@ brew cask install \
 	sublime-text \
 	virtualbox \
 	vagrant \
-	vlc
+	vlc \
+	xquartz
 
 brew install \
 	autoconf \

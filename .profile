@@ -48,7 +48,7 @@ docker-shell(){
 		-e "http_proxy=${HTTP_PROXY}" \
 		-e "https_proxy=${HTTPS_PROXY}" \
 		-e "no_proxy=${NO_PROXY}" \
-		$@
+		$@ /bin/bash
 }
 
 # docker container and image cleanup function
@@ -75,7 +75,7 @@ export GREP_OPTIONS="--color"
 export GOPATH=$HOME/Development/gocode
 
 # configure PATH
-export PATH=$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin
+export PATH=./node_modules/.bin:$GOPATH:/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # init docker client
 eval "$(docker-machine env default)"
