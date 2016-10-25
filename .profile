@@ -63,7 +63,7 @@ docker-buildbox(){
 }
 
 # command aliases
-alias ls="ls -G"
+alias ls="ls -lahG"
 alias ssh="ssh -o TCPKeepAlive=yes -Y"
 alias jobs="jobs -l"
 
@@ -88,4 +88,4 @@ export NO_PROXY=$no_proxy
 export PATH=/opt/puppetlabs/bin:$PATH
 
 # brew autocomlete
-source $(brew --repository)/etc/profile.d/bash_completion.sh
+source $(brew --repository)/completions/bash/brew

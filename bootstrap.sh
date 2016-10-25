@@ -3,11 +3,14 @@
 # NOTE: May take several hours and GBs of internettings.
 
 # install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew install brew-cask
+which brew >/dev/null || \
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install packages
+brew tap caskroom/cask
 brew cask install \
+	1password \
+	dropbox \
 	firefox \
 	google-chrome \
 	sublime-text \
@@ -20,11 +23,11 @@ brew install \
 	autoconf \
 	automake \
 	docker \
+	docker-compose \
 	docker-machine \
 	dos2unix \
 	gimme \
 	git \
-	go \
 	jq \
 	libtool \
 	mercurial \
@@ -41,7 +44,7 @@ npm install --global \
 # bootstrap Golang
 [[ -z $GOPATH ]] && export GOPATH=$HOME/Development/gocode
 [[ -d $GOPATH ]] || mkdir -p $GOPATH
-gimme 1.7
+gimme 1.7.3
 gimme 1.6.3
 gimme 1.5.4
 gimme 1.4.3
@@ -55,12 +58,16 @@ docker pull centos:7
 docker pull centos:6
 docker pull ubuntu:trusty
 docker pull ubuntu:precise
+docker pull ubuntu:xenial
 docker pull debian:jessie
 docker pull debian:wheezy
 docker pull opensuse:13.2
 
 # bootstrap vagrant
-vagrant box add --provider virtualbox bento/centos-7.1
+vagrant box add --provider virtualbox bento/centos-7.2
 vagrant box add --provider virtualbox bento/centos-6.7
 
-# TODO: bootstrap sublime and packages
+# configure sublime
+curl -Lo \
+	~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/Package\ Control.sublime-package \
+	https://packagecontrol.io/Package%20Control.sublime-package

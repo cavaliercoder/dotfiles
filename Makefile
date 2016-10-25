@@ -20,4 +20,4 @@ install:
 	launchctl load ~/Library/LaunchAgents/com.brew.update.plist
 	launchctl load ~/Library/LaunchAgents/com.default.machine.docker.plist
 
-.PHONY: all build install
+.PHONY: all build bootstrap install
