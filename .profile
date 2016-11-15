@@ -62,6 +62,14 @@ docker-buildbox(){
 	docker-shell cavaliercoder/buildbox $@
 }
 
+# restart services in docker-compose
+docker-compose-restart(){
+	docker-compose stop $@
+	docker-compose rm -f -v $@
+	docker-compose create --force-recreate $@
+	docker-compose start $@
+}
+
 # command aliases
 alias ls="ls -lahG"
 alias ssh="ssh -o TCPKeepAlive=yes -Y"
@@ -73,10 +81,10 @@ export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]"
 # configure Go
 export GREP_OPTIONS="--color"
 export GOPATH=$HOME/Development/gocode
-eval "$(gimme 1.7)" 2>/dev/null
+eval "$(gimme 1.7.3)" 2>/dev/null
 
 # configure PATH
-export PATH=./node_modules/.bin:$GOPATH:/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=./node_modules/.bin:$GOPATH/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # init docker client
 eval "$(docker-machine env default)"
@@ -89,3 +97,6 @@ export PATH=/opt/puppetlabs/bin:$PATH
 
 # brew autocomlete
 source $(brew --repository)/completions/bash/brew
+for file in /usr/local/etc/bash_completion.d/*; do
+	source $file
+done
