@@ -10,18 +10,26 @@ which brew >/dev/null || \
 brew tap caskroom/cask
 brew cask install \
 	1password \
+	android-file-transfer \
 	dropbox \
 	firefox \
 	google-chrome \
+	java \
+	messenger \
+	spotify \
 	sublime-text \
+	unrarx \
 	virtualbox \
 	vagrant \
 	vlc \
+	vnc-viewer \
 	xquartz
 
 brew install \
 	autoconf \
 	automake \
+	awscli \
+	azure-cli \
 	docker \
 	docker-compose \
 	docker-machine \
@@ -34,7 +42,10 @@ brew install \
 	node \
 	packer \
 	tmux \
+	tree \
 	wget
+
+brew install homebrew/apache/ab
 
 npm install --global \
 	bower \
@@ -54,13 +65,17 @@ gimme 1.3.3
 docker-machine create --driver virtualbox default
 eval "$(docker-machine env default)"
 
+docker pull centos:latest
 docker pull centos:7
 docker pull centos:6
+docker pull ubuntu:latest
 docker pull ubuntu:trusty
 docker pull ubuntu:precise
 docker pull ubuntu:xenial
+docker pull debgian:latest
 docker pull debian:jessie
 docker pull debian:wheezy
+docker pull opensuse:latest
 docker pull opensuse:13.2
 
 # bootstrap vagrant
