@@ -41,6 +41,7 @@ brew install \
 	mercurial \
 	node \
 	packer \
+	pandoc \
 	tmux \
 	tree \
 	wget

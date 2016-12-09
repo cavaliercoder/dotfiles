@@ -100,3 +100,7 @@ source $(brew --repository)/completions/bash/brew
 for file in /usr/local/etc/bash_completion.d/*; do
 	source $file
 done
+
+# load aws cheat sheet
+[[ -f ~/.aws-cheats ]] && source ~/.aws-cheats
+
