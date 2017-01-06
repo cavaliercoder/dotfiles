@@ -4,10 +4,11 @@ FROM centos:7
 MAINTAINER "Ryan Armstrong" <ryan@cavaliercoder.com>
 
 # install updates and packages
-RUN yum makecache fast && yum install -y --nogpgcheck epel-release && yum install -y --nogpgcheck \
+RUN yum clean all && yum install -y epel-release && yum install -y \
 	autoconf \
 	automake \
 	bzip2 \
+	createrepo \
 	curl \
 	gcc \
 	gdb \
@@ -17,22 +18,36 @@ RUN yum makecache fast && yum install -y --nogpgcheck epel-release && yum instal
 	make \
 	postgresql \
 	postgresql-devel \
+	redhat-rpm-config \
+	rpm-build \
+	ruby \
+	ruby-devel \
+	rubygem-bundler \
+	rubygem-rake \
+	rubygems \
 	strace \
 	tcpdump \
 	tree \
 	vim-enhanced \
-	wget
+	wget \
+	yum-utils
 
 # install Go
-RUN curl -fsSLO "https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz" \
-	&& tar -C /usr/local -xzf go1.5.1.linux-amd64.tar.gz \
-	&& rm -f go1.5.1.linux-amd64.tar.gz
-
-ENV GOPATH /go
+ENV GOPATH /root/gocode
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-	
+RUN curl -fsSLO "https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz" \
+	&& tar -C /usr/local -xzf go1.7.3.linux-amd64.tar.gz \
+	&& rm -f go1.7.3.linux-amd64.tar.gz
+
+# install useful gems
+RUN gem install \
+	fpm
+
+# create various projects dirs
+RUN mkdir -vp ${GOPATH}/{bin,src,pkg}
+RUN mkdir -vp /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+
 # clear caches
 RUN yum clean all
 
