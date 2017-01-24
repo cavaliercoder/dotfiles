@@ -20,6 +20,7 @@ RUN yum clean all && yum install -y epel-release && yum install -y \
 	postgresql-devel \
 	redhat-rpm-config \
 	rpm-build \
+	rpmdevtools \
 	ruby \
 	ruby-devel \
 	rubygem-bundler \
@@ -41,8 +42,9 @@ RUN curl -fsSLO "https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.g
 	&& rm -f go1.7.3.linux-amd64.tar.gz
 
 # install useful gems
-RUN gem install \
-	fpm
+RUN gem install --no-ri --no-rdoc \
+	fpm \
+	puppet
 
 # create various projects dirs
 RUN mkdir -vp ${GOPATH}/{bin,src,pkg}
