@@ -1,9 +1,15 @@
 #!/bin/bash
 
 function aws-list-instances() {
-	aws ec2 describe-instances | jq '.Reservations[].Instances[] | .InstanceId + ", " + .PrivateIpAddress + ", " + .PrivateDnsName + ", " + (.Tags[] | select(.Key=="Name") | .Value)'
+	aws ec2 describe-instances $@ | jq '.Reservations[].Instances[] | .InstanceId + ", " + .PrivateIpAddress + ", " + .PrivateDnsName + ", " + (.Tags[] | select(.Key=="Name") | .Value)'
 }
 
 function aws-elb-health() {
 	aws elb describe-instance-health --load-balancer-name $@ | jq '.InstanceStates[] | .InstanceId + ": " + .State'
+}
+
+function aws-elb-instances() {
+	for instance in $(aws elb describe-instance-health --load-balancer-name $@ | jq '.InstanceStates[].InstanceId'); do
+		aws-list-instances --instance-ids ${instance}
+	done
 }
