@@ -16,6 +16,7 @@ brew cask install \
 	google-chrome \
 	java \
 	messenger \
+	skype \
 	spotify \
 	sublime-text \
 	unrarx \
