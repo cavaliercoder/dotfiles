@@ -78,19 +78,22 @@ alias jobs="jobs -l"
 # set prompt
 export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]"
 
-# configure Go
-export GREP_OPTIONS="--color"
-export GOPATH=$HOME/Development/gocode
-eval "$(gimme 1.7.3)" 2>/dev/null
-
 # configure PATH
 export PATH=./node_modules/.bin:$GOPATH/bin:$HOME/bin:/usr/local/bin:$PATH
 
+# configure Go
+export GREP_OPTIONS="--color"
+export GOPATH=$HOME/Development/gocode
+eval "$(gimme 1.7.5)" 2>/dev/null
+
 # init docker client
-eval "$(docker-machine env default)"
-update-docker-hosts
-export no_proxy=$no_proxy,$DOCKER_IP
-export NO_PROXY=$no_proxy
+#eval "$(docker-machine env default)"
+#update-docker-hosts
+#export no_proxy=$no_proxy,$DOCKER_IP
+#export NO_PROXY=$no_proxy
+
+# init thefuck
+eval "$(thefuck --alias)"
 
 # configure puppet binaries
 export PATH=/opt/puppetlabs/bin:$PATH
