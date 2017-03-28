@@ -13,3 +13,16 @@ function aws-elb-instances() {
 		aws-list-instances --instance-ids ${instance}
 	done
 }
+
+function aws-list-vpcs() {
+	aws ec2 describe-vpcs $@ \
+		| jq -rM '.Vpcs[] | .CidrBlock + ", " + .VpcId + ", " + (.Tags[]? | select(.Key == "Name") | .Value)' \
+		| sort
+}
+
+function aws-list-subnets() {
+	aws ec2 describe-subnets $@ \
+		| jq -rM '.Subnets[] | .CidrBlock + ", " + .SubnetId + ", " + .AvailabilityZone + (.Tags[]? | select(.Key=="Name") | .Value)' \
+		| sort
+}
+
