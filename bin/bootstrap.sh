@@ -22,6 +22,7 @@ brew cask install \
 	unrarx \
 	virtualbox \
 	vagrant \
+	visual-studio-code \
 	vlc \
 	vnc-viewer \
 	xquartz
@@ -37,6 +38,7 @@ brew install \
 	dos2unix \
 	gimme \
 	git \
+	htop \
 	jq \
 	libtool \
 	mercurial \
@@ -48,17 +50,19 @@ brew install \
 	wget
 
 brew install homebrew/apache/ab
+brew install cavaliercoder/dmidecode/dmidecode
 
 npm install --global \
 	bower \
 	grunt \
-	gulp
+	gulp \
+	pm2
 
 # bootstrap Golang
 [[ -z $GOPATH ]] && export GOPATH=$HOME/Development/gocode
 [[ -d $GOPATH ]] || mkdir -p $GOPATH
-gimme 1.7.3
-gimme 1.6.3
+gimme 1.7.5
+gimme 1.6.4
 gimme 1.5.4
 gimme 1.4.3
 gimme 1.3.3
@@ -74,15 +78,15 @@ docker pull ubuntu:latest
 docker pull ubuntu:trusty
 docker pull ubuntu:precise
 docker pull ubuntu:xenial
-docker pull debgian:latest
+docker pull debian:latest
 docker pull debian:jessie
 docker pull debian:wheezy
 docker pull opensuse:latest
 docker pull opensuse:13.2
 
 # bootstrap vagrant
-vagrant box add --provider virtualbox bento/centos-7.2
-vagrant box add --provider virtualbox bento/centos-6.7
+vagrant box add --provider virtualbox centos/7.2
+vagrant box add --provider virtualbox centos/6.7
 
 # configure sublime
 curl -Lo \

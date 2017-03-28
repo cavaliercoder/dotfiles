@@ -1,23 +1,19 @@
 COPY = install -vCm 600
 MKDIR = install -vd
 
-all: build
-
-build:
-	echo "Nothing to do yet"
+all:
+	echo "Nothing to do"
 
 install:
-	$(COPY) .profile $(HOME)/.profile
+	$(COPY) .profile $(HOME)/.profile && cat lib/*.sh >> $(HOME)/.profile
 	$(COPY) .vimrc $(HOME)/.vimrc
 	$(COPY) .gitconfig $(HOME)/.gitconfig
 	$(COPY) .gitignore_global $(HOME)/.gitignore_global
-	$(MKDIR) -m 700 ~/.ssh 
-	$(COPY) .ssh/config ~/.ssh/config
-	$(COPY) com.brew.update.plist ~/Library/LaunchAgents/com.brew.update.plist
-	$(COPY) com.default.machine.docker.plist \
-		~/Library/LaunchAgents/com.default.machine.docker.plist
+	$(MKDIR) -m 700 $(HOME)/.ssh 
+	$(COPY) .ssh/config $(HOME)/.ssh/config
+	$(COPY) .tmux.conf $(HOME)/.tmux.conf
+	$(COPY) vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
+	$(COPY) com.brew.update.plist $(HOME)/Library/LaunchAgents/com.brew.update.plist
+	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 
-	launchctl load ~/Library/LaunchAgents/com.brew.update.plist
-	launchctl load ~/Library/LaunchAgents/com.default.machine.docker.plist
-
-.PHONY: all build bootstrap install
+.PHONY: all install
