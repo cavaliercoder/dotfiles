@@ -2,6 +2,8 @@
 # Bootstrap a new OS X machine with my tools.
 # NOTE: May take several hours and GBs of internettings.
 
+export PATH=/usr/local/bin:$PATH
+
 # install homebrew
 which brew >/dev/null || \
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -52,6 +54,23 @@ brew install \
 brew install homebrew/apache/ab
 brew install cavaliercoder/dmidecode/dmidecode
 
+# install vscode extensions
+while read extension; do
+    code --install-extension $extension
+done <<EOL
+Borke.puppet
+PeterJausovec.vscode-docker
+austin.code-gnu-global
+donjayamanne.python
+lukehoban.Go
+ms-vscode.PowerShell
+ms-vscode.cpptools
+rebornix.Ruby
+tht13.python
+waderyan.gitblame
+EOL
+
+# bootstrap npm modules
 npm install --global \
 	bower \
 	grunt \
