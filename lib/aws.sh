@@ -25,3 +25,9 @@ function aws-list-subnets() {
 		| jq -rM '.Subnets[] | .CidrBlock + ", " + .SubnetId + ", " + .AvailabilityZone + (.Tags[]? | select(.Key=="Name") | .Value)' \
 		| sort
 }
+
+function aws-list-images() {
+	aws ec2 describe-images --owners=self $@ \
+		| jq -rM '.Images[] | .CreationDate + " " + .ImageId + " " + .State + " " + .Name + " " + "\"" + .Description + "\""' \
+		| sort -r
+}
