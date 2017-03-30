@@ -31,3 +31,11 @@ function aws-list-images() {
 		| jq -rM '.Images[] | .CreationDate + " " + .ImageId + " " + .State + " " + .Name + " " + "\"" + .Description + "\""' \
 		| sort -r
 }
+
+function ssh-ec2 ()
+{
+    ID=$1;
+    shift;
+    ssh $(aws ec2 describe-instances --query="Reservations[*].Instances[*].PrivateIpAddress" --instance-ids $ID | jq -rM '.[][0]') $@
+}
+
