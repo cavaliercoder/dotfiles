@@ -32,6 +32,12 @@ function aws-list-images() {
 		| sort -r
 }
 
+function aws-list-rds-instances() {
+	aws rds describe-db-instances $@ \
+		| jq -rM '.DBInstances[] | .DBInstanceIdentifier + ", " + .DBInstanceClass + ", " + .Engine + " v" + .EngineVersion + ", " + .AvailabilityZone + ", " + .DBInstanceStatus' \
+		| sort
+}
+
 function ssh-ec2 ()
 {
     ID=$1;
