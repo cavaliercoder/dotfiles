@@ -48,6 +48,7 @@ brew install \
 	node \
 	packer \
 	pandoc \
+	postgresql \
 	tmux \
 	tree \
 	wget
