@@ -16,6 +16,7 @@ brew cask install \
 	dropbox \
 	firefox \
 	google-chrome \
+	hyper \
 	java \
 	messenger \
 	skype \
@@ -80,6 +81,7 @@ npm install --global \
 # bootstrap Golang
 [[ -z $GOPATH ]] && export GOPATH=$HOME/Development/gocode
 [[ -d $GOPATH ]] || mkdir -p $GOPATH
+gimme 1.8
 gimme 1.7.5
 gimme 1.6.4
 gimme 1.5.4

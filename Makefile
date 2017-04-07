@@ -1,19 +1,25 @@
-COPY = install -vCm 600
-MKDIR = install -vd
+# 0400 perms prevent accidental local updates
+INSTALL = install -vCm 400
+MKDIR = install -vdm 700
 
 all:
 	echo "Nothing to do"
 
 install:
-	$(COPY) .profile $(HOME)/.profile && cat lib/*.sh >> $(HOME)/.profile
-	$(COPY) .vimrc $(HOME)/.vimrc
-	$(COPY) .gitconfig $(HOME)/.gitconfig
-	$(COPY) .gitignore_global $(HOME)/.gitignore_global
-	$(MKDIR) -m 700 $(HOME)/.ssh 
-	$(COPY) .ssh/config $(HOME)/.ssh/config
-	$(COPY) .tmux.conf $(HOME)/.tmux.conf
-	$(COPY) vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
-	$(COPY) com.brew.update.plist $(HOME)/Library/LaunchAgents/com.brew.update.plist
+	$(MKDIR) $(HOME)/.ssh
+	$(MKDIR) $(HOME)/.profile.d
+	$(INSTALL) .gitconfig $(HOME)/.gitconfig
+	$(INSTALL) .gitignore_global $(HOME)/.gitignore_global
+	$(INSTALL) .hyper.js $(HOME)/.hyper.js
+	$(INSTALL) .profile $(HOME)/.profile
+	$(INSTALL) .ssh/config $(HOME)/.ssh/config
+	$(INSTALL) .tmux.conf $(HOME)/.tmux.conf
+	$(INSTALL) .vimrc $(HOME)/.vimrc
+	$(INSTALL) com.brew.update.plist $(HOME)/Library/LaunchAgents/com.brew.update.plist
+	$(INSTALL) lib/aws.sh $(HOME)/.profile.d/aws.sh
+	$(INSTALL) lib/docker.sh $(HOME)/.profile.d/docker.sh
+	$(INSTALL) lib/go.sh $(HOME)/.profile.d/go.sh
+	$(INSTALL) vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 
-.PHONY: all install
+.PHONY: all pull install
