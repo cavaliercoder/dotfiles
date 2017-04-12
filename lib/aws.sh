@@ -1,7 +1,7 @@
 #!/bin/bash
 # cheat functions for the AWS CLI
 function aws-list-instances() {
-	aws ec2 describe-instances $@ | jq '.Reservations[].Instances[] | .InstanceId + ", " + .PrivateIpAddress + ", " + .PrivateDnsName + ", " + (.Tags[] | select(.Key=="Name") | .Value)'
+	aws ec2 describe-instances $@ | jq '.Reservations[].Instances[] | .InstanceId + ", " + .InstanceType + ", " + .PrivateIpAddress + ", " + .PrivateDnsName + ", " + (.Tags[] | select(.Key=="Name") | .Value)'
 }
 
 function aws-elb-health() {
