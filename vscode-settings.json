@@ -5,7 +5,8 @@
   "editor.renderIndentGuides": true,
   "files.associations": {
     "Puppetfile": "ruby",
-    "Vagrantfile": "ruby"
+    "Vagrantfile": "ruby",
+    "Yumfile": "ini"
   },
   "[cpp]": {
     "editor.quickSuggestions": false
