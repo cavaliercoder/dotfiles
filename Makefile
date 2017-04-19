@@ -12,6 +12,7 @@ install:
 	$(INSTALL) .gitignore_global $(HOME)/.gitignore_global
 	$(INSTALL) .hyper.js $(HOME)/.hyper.js
 	$(INSTALL) .profile $(HOME)/.profile
+	$(INSTALL) .rpmmacros $(HOME)/.rpmmacros
 	$(INSTALL) .ssh/config $(HOME)/.ssh/config
 	$(INSTALL) .tmux.conf $(HOME)/.tmux.conf
 	$(INSTALL) .vimrc $(HOME)/.vimrc

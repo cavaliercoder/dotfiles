@@ -23,12 +23,14 @@ RUN yum clean all && yum install -y epel-release && yum install -y \
 	python34-devel \
 	redhat-rpm-config \
 	rpm-build \
+	rpm-sign \
 	rpmdevtools \
 	ruby \
 	ruby-devel \
 	rubygem-bundler \
 	rubygem-rake \
 	rubygems \
+	selinux-policy-devel \
 	strace \
 	tcpdump \
 	tree \
