@@ -41,6 +41,7 @@ brew install \
 	dos2unix \
 	gimme \
 	git \
+	gnupg \
 	htop \
 	jq \
 	libtool \

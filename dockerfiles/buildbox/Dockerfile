@@ -19,6 +19,8 @@ RUN yum clean all && yum install -y epel-release && yum install -y \
 	make \
 	postgresql \
 	postgresql-devel \
+	python-devel \
+	python34-devel \
 	redhat-rpm-config \
 	rpm-build \
 	rpmdevtools \
