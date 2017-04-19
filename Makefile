@@ -18,6 +18,7 @@ install:
 	$(INSTALL) com.brew.update.plist $(HOME)/Library/LaunchAgents/com.brew.update.plist
 	$(INSTALL) lib/aws.sh $(HOME)/.profile.d/aws.sh
 	$(INSTALL) lib/docker.sh $(HOME)/.profile.d/docker.sh
+	$(INSTALL) lib/git.sh $(HOME)/.profile.d/git.sh
 	$(INSTALL) lib/go.sh $(HOME)/.profile.d/go.sh
 	$(INSTALL) vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
