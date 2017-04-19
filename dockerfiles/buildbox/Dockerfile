@@ -10,6 +10,7 @@ RUN yum clean all && yum install -y epel-release && yum install -y \
 	bzip2 \
 	createrepo \
 	curl \
+	dbus-devel \
 	gcc \
 	gdb \
 	git \
