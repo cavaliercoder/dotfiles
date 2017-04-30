@@ -8,11 +8,17 @@
     "Vagrantfile": "ruby",
     "Yumfile": "ini"
   },
+  "files.exclude": {
+    "**/*.pyc": true
+  },
   "[cpp]": {
     "editor.quickSuggestions": false
   },
   "[c]": {
     "editor.quickSuggestions": false
+  },
+  "[python]": {
+    "editor.tabSize": 4
   },
   "[makefile]": {
     "editor.tabSize": 4,
