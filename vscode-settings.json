@@ -1,5 +1,6 @@
 {
   "window.zoomLevel": 0,
+  "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "editor.rulers": [ 80, 100 ],
   "editor.renderIndentGuides": true,
@@ -12,10 +13,14 @@
     "**/*.pyc": true
   },
   "[cpp]": {
-    "editor.quickSuggestions": false
+    "editor.insertSpaces": false,
+    "editor.quickSuggestions": false,
+    "editor.tabSize": 4
   },
   "[c]": {
-    "editor.quickSuggestions": false
+    "editor.insertSpaces": false,
+    "editor.quickSuggestions": false,
+    "editor.tabSize": 4
   },
   "[python]": {
     "editor.tabSize": 4
@@ -26,5 +31,8 @@
   },
   "[shellscript]": {
     "editor.tabSize": 4
+  },
+  "[puppet]": {
+    "editor.rulers": [ 140 ]
   }
 }
