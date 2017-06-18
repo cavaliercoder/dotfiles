@@ -43,6 +43,7 @@ brew install \
 	git \
 	gnupg \
 	htop \
+	ipcalc \
 	jq \
 	libtool \
 	mercurial \
@@ -50,6 +51,7 @@ brew install \
 	packer \
 	pandoc \
 	postgresql \
+	reattach-to-user-namespace \
 	tmux \
 	tree \
 	wget
