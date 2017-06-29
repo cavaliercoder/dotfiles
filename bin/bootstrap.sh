@@ -52,6 +52,7 @@ brew install \
 	pandoc \
 	postgresql \
 	reattach-to-user-namespace \
+	terraform \
 	tmux \
 	tree \
 	wget
