@@ -59,6 +59,7 @@ brew install \
 
 brew install homebrew/apache/ab
 brew install cavaliercoder/dmidecode/dmidecode
+brew install wata727/tflint/tflint
 
 # install vscode extensions
 while read extension; do

@@ -5,6 +5,7 @@
   "editor.rulers": [ 80, 100 ],
   "editor.renderIndentGuides": true,
   "files.associations": {
+    "*.tfstate": "json",
     "Puppetfile": "ruby",
     "Vagrantfile": "ruby",
     "Yumfile": "ini"
@@ -12,6 +13,7 @@
   "files.exclude": {
     "**/*.pyc": true
   },
+  "terraform.formatOnSave": true,
   "[cpp]": {
     "editor.insertSpaces": false,
     "editor.quickSuggestions": false,
