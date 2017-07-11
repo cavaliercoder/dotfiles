@@ -16,6 +16,7 @@ install:
 	$(INSTALL) .rpmmacros $(HOME)/.rpmmacros
 	$(INSTALL) .ssh/config $(HOME)/.ssh/config
 	$(INSTALL) .tmux.conf $(HOME)/.tmux.conf
+	$(INSTALL) .tmux.conf.local $(HOME)/.tmux.conf.local
 	$(INSTALL) .vimrc $(HOME)/.vimrc
 	$(INSTALL) com.brew.update.plist $(HOME)/Library/LaunchAgents/com.brew.update.plist
 	$(INSTALL) lib/aws.sh $(HOME)/.profile.d/aws.sh
