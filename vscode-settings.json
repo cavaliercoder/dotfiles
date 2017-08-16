@@ -6,6 +6,8 @@
   "editor.renderIndentGuides": true,
   "files.associations": {
     "*.tfstate": "json",
+    "*.yaml.erb": "yaml",
+    "*.yml.erb": "yaml",
     "Puppetfile": "ruby",
     "Vagrantfile": "ruby",
     "Yumfile": "ini"
