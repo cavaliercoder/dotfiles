@@ -11,10 +11,6 @@ RUN yum install -y epel-release && yum -y install \
 	tree valgrind vim-enhanced wget yum-utils \
   && yum clean all
 
-# install useful gems
-RUN gem install --no-ri --no-rdoc \
-	fpm puppet
-
 # install useful python packages
 RUN pip install \
 	boto3 zabbix-template-converter
