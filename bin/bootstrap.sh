@@ -39,6 +39,7 @@ brew install \
 	docker-compose \
 	docker-machine \
 	dos2unix \
+	fswatch \
 	gimme \
 	git \
 	gnupg \
