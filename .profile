@@ -35,6 +35,7 @@ export PATH=./node_modules/.bin:$HOME/bin:/usr/local/bin:$PATH
 
 # set editor to vi
 export EDITOR=vim
+export VISUAL=vim
 
 # init thefuck
 eval "$(thefuck --alias)"
