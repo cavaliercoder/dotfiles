@@ -22,9 +22,10 @@ function docker-shell(){
 	docker run \
 		-it \
 		--rm \
-		-v $HOME:/home/$USER \
-		-v $PWD:/root/$PWDN \
-		-w /root/$PWDN \
+		-v "$HOME:/home/$USER" \
+		-v "$HOME/.gnupg:/root/.gnupg" \
+		-v "$PWD:/root/$PWDN" \
+		-w "/root/$PWDN" \
 		-e "HTTP_PROXY=${HTTP_PROXY}" \
 		-e "HTTPS_PROXY=${HTTPS_PROXY}" \
 		-e "NO_PROXY=${NO_PROXY}" \
