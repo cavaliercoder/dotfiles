@@ -28,7 +28,8 @@
     "editor.tabSize": 4
   },
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.rulers": [ 100 ]
   },
   "[makefile]": {
     "editor.tabSize": 4,
