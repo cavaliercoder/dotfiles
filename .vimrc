@@ -1,12 +1,22 @@
 syntax on
 colorscheme default
+set background=light
 
 " highlight search results
 set hlsearch
 
 " show line numbers
 set number
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight clear LineNr
+highlight LineNr ctermfg=DarkGrey
+
+" show cursor line
+set cursorline
+highlight clear CursorLine
+highlight CursorLine ctermbg=235 ctermfg=NONE
+
+" highlight matching parents
+set showmatch
 
 " column ruler
 " set colorcolumn=81,101
