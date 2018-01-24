@@ -26,4 +26,4 @@ install:
 	install -vCm 600 vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 
-.PHONY: all pull install
+.PHONY: all install
