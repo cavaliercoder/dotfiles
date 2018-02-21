@@ -6,15 +6,12 @@ all:
 	echo "Nothing to do"
 
 install:
-	$(MKDIR) $(HOME)/.ssh
 	$(MKDIR) $(HOME)/.profile.d
 	$(INSTALL) .gitconfig $(HOME)/.gitconfig
 	$(INSTALL) .gitignore_global $(HOME)/.gitignore_global
 	$(INSTALL) .hyper.js $(HOME)/.hyper.js
 	$(INSTALL) .profile $(HOME)/.profile
 	$(INSTALL) .pydistutils.cfg $(HOME)/.pydistutils.cfg
-	$(INSTALL) .rpmmacros $(HOME)/.rpmmacros
-	$(INSTALL) .ssh/config $(HOME)/.ssh/config
 	$(INSTALL) .tmux.conf $(HOME)/.tmux.conf
 	$(INSTALL) .tmux.conf.local $(HOME)/.tmux.conf.local
 	$(INSTALL) .vimrc $(HOME)/.vimrc
@@ -25,5 +22,6 @@ install:
 	$(INSTALL) lib/go.sh $(HOME)/.profile.d/go.sh
 	install -vCm 600 vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
+	sudo install -vCm 440 -o root -g wheel sudoers.d/wheel /etc/sudoers.d/wheel
 
 .PHONY: all install
