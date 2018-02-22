@@ -23,5 +23,6 @@ install:
 	install -vCm 600 vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 	sudo install -vCm 440 -o root -g wheel sudoers.d/wheel /etc/sudoers.d/wheel
+	./.macos
 
 .PHONY: all install
