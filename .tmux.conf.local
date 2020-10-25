@@ -265,3 +265,7 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+
+# show status bar just a little longer
+set -g display-time 4000
+

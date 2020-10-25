@@ -17,8 +17,9 @@
     "**/*.pyc": true
   },
   "terraform.formatOnSave": true,
-  "go.gopath": "/Users/ryana/Development/gocode",
-  "go.goroot": "/Users/ryana/.gimme/versions/go1.9.2.src",
+  "go.gopath": "/Users/rarmstrong/Development/gocode",
+  "go.goroot": "/usr/local/Cellar/go/1.15.3/libexec",
+  "go.useLanguageServer": true,
   "[cpp]": {
     "editor.insertSpaces": false,
     "editor.quickSuggestions": false,

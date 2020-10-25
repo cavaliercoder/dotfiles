@@ -1,6 +1,6 @@
 # 0400 perms prevent accidental local updates
-INSTALL = install -vCm 400
-MKDIR = install -vdm 700
+INSTALL = install -vCm 400 -o $(USER)
+MKDIR = install -vdm 700 -o $(USER)
 
 all:
 	echo "Nothing to do"
@@ -21,6 +21,7 @@ install:
 	$(INSTALL) lib/git.sh $(HOME)/.profile.d/git.sh
 	$(INSTALL) lib/go.sh $(HOME)/.profile.d/go.sh
 	$(INSTALL) lib/brew.sh $(HOME)/.profile.d/brew.sh
+	$(INSTALL) lib/pycharm.sh $(HOME)/.profile.d/pycharm.sh
 	install -vCm 600 vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 	sudo install -vCm 440 -o root -g wheel sudoers.d/wheel /etc/sudoers.d/wheel
