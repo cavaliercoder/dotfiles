@@ -22,6 +22,7 @@ install:
 	$(INSTALL) lib/go.sh $(HOME)/.profile.d/go.sh
 	$(INSTALL) lib/brew.sh $(HOME)/.profile.d/brew.sh
 	$(INSTALL) lib/pycharm.sh $(HOME)/.profile.d/pycharm.sh
+	$(INSTALL) lib/rust.sh $(HOME)/.profile.d/rust.sh
 	install -vCm 600 vscode-settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	sudo launchctl load $(HOME)/Library/LaunchAgents/com.brew.update.plist
 	sudo install -vCm 440 -o root -g wheel sudoers.d/wheel /etc/sudoers.d/wheel
