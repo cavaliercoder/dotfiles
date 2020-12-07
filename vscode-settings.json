@@ -20,6 +20,11 @@
   "go.gopath": "/Users/rarmstrong/Development/gocode",
   "go.goroot": "/usr/local/Cellar/go/1.15.3/libexec",
   "go.useLanguageServer": true,
+  "python.pythonPath": "/usr/local/bin/python3",
+  "[rust]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+  },
   "[cpp]": {
     "editor.insertSpaces": false,
     "editor.quickSuggestions": false,
